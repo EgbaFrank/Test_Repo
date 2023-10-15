@@ -5,7 +5,7 @@ int main(void)
 	int i = 0;
 	while (i < 5)
 	{
-		printf("Hello, printf\n");
+		printf("Hello, printf. Let's start\n");
 		++i;
 	}
 
