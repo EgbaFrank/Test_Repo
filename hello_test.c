@@ -2,6 +2,12 @@
 
 int main(void)
 {
-	printf("Hello, printf\n");
+	int i = 0;
+	while (i < 5)
+	{
+		printf("Hello, printf\n");
+		++i;
+	}
+
 	return 0;
 }
