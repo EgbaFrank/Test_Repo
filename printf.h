@@ -8,7 +8,6 @@
 
 #define BUFF_SIZE 1024
 int _printf(const char *format, ...);
-int print_integer(int n, int base);
-int print_decimal(int n);
+int print_integer(int n);
 
 #endif /* PRINTF_H */
