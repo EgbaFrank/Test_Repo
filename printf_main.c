@@ -23,5 +23,10 @@ int main(void)
 
 	printf("%d %d\n", count1, count2);
 
+	count1 = printf("Percent: [%%]\n");
+	count2 = _printf("Percent: [%%]\n");
+
+	printf("%d %d\n", count1, count2);
+
 	return (0);
 }
