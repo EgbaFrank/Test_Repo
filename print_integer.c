@@ -10,7 +10,7 @@
 
 int print_integer(int n)
 {
-	int digits_printed;
+	int digits_printed = 0;
 
 	if (n == 0) /* base case when n is 0 */
 	{
@@ -25,7 +25,7 @@ int print_integer(int n)
 	}
 	if (n >= 10)
 	{
-		print_number(n / 10);
+		print_integer(n / 10);
 		digits_printed++;
 	}
 

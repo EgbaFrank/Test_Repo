@@ -1,6 +1,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "printf.h"
 
 /**
  * _printf - produces output according to a format
@@ -49,7 +50,7 @@ int _printf(const char *format, ...)
 			else if (*ptr == 'd' || *ptr == 'i')
 			{
 				n = va_arg(args, int);
-				chars_printed += print_integers(n);
+				chars_printed += print_integer(n);
 			}
 
 		}
