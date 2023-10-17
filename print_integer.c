@@ -1,4 +1,4 @@
-#include "printf.h"
+#include "main.h"
 
 /**
  * print_integer - prints integer in decimal, hexadecimal and octal

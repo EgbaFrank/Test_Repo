@@ -1,4 +1,4 @@
-#include "printf.h"
+#include "main.h"
 
 /**
  * main - test the printf function
@@ -8,7 +8,7 @@
 
 int main(void)
 {
-	int n = 98;
+	int n = -98;
 	char c = 'C';
 	char *s = "This is a printf test";
 	int len1, len2;

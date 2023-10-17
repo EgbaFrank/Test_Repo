@@ -1,64 +1,58 @@
-#include "printf.h"
+#include "main.h"
 
 /**
- * _printf - printf output according to format
- * @format: format to go by
+ * _printf - produces output according to a format
+ * @format: character string
  *
- * Return: number of character printed excluding '\0_'
+ * Return: no. of characters printed (excluding the null byte)
  */
 
 int _printf(const char *format, ...)
 {
-	va_list ap;
-	char buffer[BUFF_SIZE];
-	int buffer_index = 0;
+	va_list args;
+	int chars_printed = 0;
+	const char *ptr = format;
 	char *str;
 
-	va_start(ap, format);
-
-	while (format != NULL && *format != '\0') /* check for empty arguments */
+	va_start(args, format);
+	while (*ptr) /* iterate the entire string excludig null */
 	{
-		if (*format == '%') /* checks for conversion specifier */
+		if (*ptr == '%') /* if there is a format specifier */
 		{
-			++format; /* move past % */
+			ptr++; /* move to the next character*/
 
-			switch(*format)
+			if (*ptr == 'c')
 			{
-				case 'c':
-					buffer[buffer_index++] = va_arg(ap, int);
-					break;
-
-				case 's':
-					str = va_arg(ap, char *);
-
-					while (*str != '\0')
-					{
-						buffer[buffer_index++] = *str;
-						++str;
-					}
-					break;
-
-				case '%':
-					buffer[buffer_index++] = va_arg(ap, int);
-					break;
-
-				default:
-					break;
+				putchar(va_arg(args, int)); /* int cause its stored in ASCII*/
+				chars_printed++;
+			}
+			else if (*ptr == 's')
+			{
+				str = va_arg(args, char *);
+				while (*str)
+				{
+					putchar(*str);
+					chars_printed++;
+					str++;
+				}
+			}
+			else if (*ptr == '%')
+			{
+				putchar('%');
+				chars_printed++;
+			}
+			else if (*ptr == 'd' || *ptr == 'i')
+			{
+				chars_printed += print_integer(va_arg(args, int));
 			}
 		}
-
-		else
+		else /* if there is no format specifier print whatever input*/
 		{
-			buffer[buffer_index++] = *format; /* check for regular values */
+			putchar(*ptr);
+			chars_printed++;
 		}
-		++format;
+		ptr++;
 	}
-
-	buffer[buffer_index] = '\0';
-
-	va_end (ap);
-
-	write(1, buffer, strlen(buffer)); /* print to stdout, the content of buffer */
-
-	return (strlen(buffer)); /* return buffer lenght */
+	va_end(args);
+	return (chars_printed); /* no of chars printed */
 }
